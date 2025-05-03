@@ -1,0 +1,17 @@
+<?php include 'koneksi.php'; ?>
+<h2>Admin Panel - Konfirmasi Deposit</h2>
+<table border="1">
+<tr><th>ID</th><th>Nama</th><th>Jumlah</th><th>Status</th><th>Aksi</th></tr>
+<?php
+$result = $koneksi->query("SELECT * FROM deposit WHERE status='Pending'");
+while ($row = $result->fetch_assoc()) {
+    echo "<tr>
+        <td>{$row['id']}</td>
+        <td>{$row['nama']}</td>
+        <td>{$row['jumlah']}</td>
+        <td>{$row['status']}</td>
+        <td><a href='konfirmasi.php?id={$row['id']}'>Konfirmasi</a></td>
+    </tr>";
+}
+?>
+</table>
